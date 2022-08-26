@@ -7,6 +7,8 @@ import uz.everbestlab.tasbehapi.dto.DhikrDto;
 import uz.everbestlab.tasbehapi.entity.Dhikr;
 import uz.everbestlab.tasbehapi.service.DhikrService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/dhikr")
 @RequiredArgsConstructor
@@ -17,6 +19,11 @@ public class DhikrController {
     @PostMapping
     public ResponseEntity<DhikrDto> createDhikr(@RequestBody DhikrDto dhikrDto){
         return ResponseEntity.ok(dhikrService.addDhikr(dhikrDto));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<DhikrDto>> getAll(){
+        return ResponseEntity.ok(dhikrService.getAll());
     }
 
     @DeleteMapping("/{id}")

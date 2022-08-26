@@ -6,7 +6,7 @@ import uz.everbestlab.tasbehapi.dto.LoginDto;
 import uz.everbestlab.tasbehapi.dto.UserDto;
 import uz.everbestlab.tasbehapi.entity.User;
 import uz.everbestlab.tasbehapi.entity.enums.Role;
-import uz.everbestlab.tasbehapi.mapper.UserMapper;
+import uz.everbestlab.tasbehapi.service.mapper.UserMapper;
 import uz.everbestlab.tasbehapi.repository.UserRepository;
 import uz.everbestlab.tasbehapi.security.jwt.JwtUtil;
 import uz.everbestlab.tasbehapi.service.UserService;

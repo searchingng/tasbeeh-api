@@ -4,9 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uz.everbestlab.tasbehapi.dto.DhikrDto;
 import uz.everbestlab.tasbehapi.entity.Dhikr;
-import uz.everbestlab.tasbehapi.mapper.DhikrMapper;
+import uz.everbestlab.tasbehapi.service.mapper.DhikrMapper;
 import uz.everbestlab.tasbehapi.repository.DhikrRepository;
 import uz.everbestlab.tasbehapi.service.DhikrService;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -25,5 +27,10 @@ public class DhikrServiceImpl implements DhikrService {
     @Override
     public void deleteById(Long id) {
         dhikrRepository.deleteById(id);
+    }
+
+    @Override
+    public List<DhikrDto> getAll() {
+        return dhikrMapper.toDto(dhikrRepository.findAll());
     }
 }
