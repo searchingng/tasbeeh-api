@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import uz.everbestlab.tasbehapi.entity.enums.Role;
 import uz.everbestlab.tasbehapi.security.UserDetailsServiceImpl;
 import uz.everbestlab.tasbehapi.security.jwt.AuthTokenFilter;
 
@@ -28,17 +29,6 @@ public class SecurityConfig {
     private final AuthTokenFilter authTokenFilter;
     private final UserDetailsServiceImpl userDetailsService;
 
-   /* @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
-        return configuration.getAuthenticationManager();
-    }
-
-    @Bean
-    public static PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
-    }
-*/
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -47,7 +37,7 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/api/users/login").permitAll()
-//                .antMatchers("/api/**").permitAll()
+                .antMatchers("/api/dhikr/**").hasAuthority("ADMIN_ROLE")
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class)
