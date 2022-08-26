@@ -1,4 +1,4 @@
-package uz.everbestlab.tasbehapi.mapper;
+package uz.everbestlab.tasbehapi.service.mapper;
 
 import org.mapstruct.Mapper;
 import uz.everbestlab.tasbehapi.dto.UserDto;
