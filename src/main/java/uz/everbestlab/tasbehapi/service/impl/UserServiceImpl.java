@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import uz.everbestlab.tasbehapi.dto.LoginDto;
 import uz.everbestlab.tasbehapi.dto.UserDto;
 import uz.everbestlab.tasbehapi.entity.User;
+import uz.everbestlab.tasbehapi.entity.enums.Role;
 import uz.everbestlab.tasbehapi.mapper.UserMapper;
 import uz.everbestlab.tasbehapi.repository.UserRepository;
 import uz.everbestlab.tasbehapi.security.jwt.JwtUtil;
@@ -21,10 +22,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public LoginDto login(UserDto userDto) {
         User user = userMapper.toEntity(userDto);
+        user.setRole(Role.USER_ROLE);
         userRepository.save(user);
         String jwt = jwtUtil.generateJwtToken(user.getId());
         LoginDto dto = new LoginDto();
-        dto.setUser(userDto);
+        dto.setUser(userMapper.toDto(user));
         dto.setToken(jwt);
         return dto;
     }
