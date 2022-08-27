@@ -17,6 +17,8 @@ public class User extends BaseEntity{
 
     private String firstName;
     private String lastName;
+    private String imagePath;
+    private String fileName;
 
     @Enumerated(EnumType.STRING)
     private Role role;
