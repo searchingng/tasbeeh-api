@@ -14,7 +14,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
             " t.task.dhikr.transliteration AS transliteration, \n" +
             " t.task.dhikr.translation AS translation, \n" +
             " t.task.taskCount AS taskCount, \n" +
-            " (SELECT count(ut) FROM UserTasks ut WHERE ut.taskId = t.id) AS memberCount, \n" +
+            " (SELECT count(ut) FROM UserTasks ut WHERE ut.taskId = t.task.id) AS memberCount, \n" +
             " t.task.isNonStop AS isNonStop, \n" +
             " t.task.startTime AS startTime, \n" +
             " t.task.endTime AS endTime, \n" +
