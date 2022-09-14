@@ -32,7 +32,7 @@ public class TaskServiceImpl implements TaskService {
     private final UserMapper userMapper;
 
     @Override
-    public TaskDto createTask(TaskDto dto) {
+    public TaskListDto createTask(TaskDto dto) {
         User user = UserUtil.currentUser();
         Task task = taskMapper.toEntity(dto);
         task.setStatus(TaskStatus.ACTIVE);
@@ -41,8 +41,8 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.save(task);
 
         userTasksService.join(user.getId(), task.getId());
-
-        return taskMapper.toDto(task);
+        return getTaskById(task.getId(), user.getId());
+//        return taskMapper.toDto(task);
     }
 
     @Override
@@ -57,14 +57,21 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public TaskDto joinToTask(Long id) {
+    public TaskListDto getTaskById(Long taskId, Long userId) {
+        return taskRepository.getByTaskIdAndUserId(userId, taskId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Task Not Found"));
+    }
+
+    @Override
+    public TaskListDto joinToTask(Long id) {
         User user = UserUtil.currentUser();
 
         if (!taskRepository.existsById(id))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Such Task not found!");
 
         userTasksService.join(user.getId(), id);
-        return taskMapper.toDto(taskRepository.findById(id).get());
+//        return taskMapper.toDto(taskRepository.findById(id).get());
+        return getTaskById(id, user.getId());
     }
 
     @Override

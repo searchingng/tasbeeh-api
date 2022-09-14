@@ -21,12 +21,12 @@ public class TaskController {
     private final TaskService taskService;
 
     @PostMapping
-    public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto dto){
+    public ResponseEntity<TaskListDto> createTask(@RequestBody TaskDto dto){
         return ResponseEntity.ok(taskService.createTask(dto));
     }
 
     @PostMapping("/join/{taskId}")
-    public ResponseEntity<TaskDto> joinToTask(@PathVariable Long taskId){
+    public ResponseEntity<TaskListDto> joinToTask(@PathVariable Long taskId){
         return ResponseEntity.ok(taskService.joinToTask(taskId));
     }
 

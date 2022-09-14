@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 public class TaskListDto {
 
     private Long id;
+    private Long dhikrId;
     private String transliteration;
     private String translation;
     private Long taskCount;
