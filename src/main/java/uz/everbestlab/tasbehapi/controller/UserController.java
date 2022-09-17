@@ -40,7 +40,7 @@ public class UserController {
                 .body(file);
     }
 
-    @GetMapping(value = "/avatar/{fileName}", produces = {"image/*"})
+    @GetMapping(value = "/avatar/{fileName}", produces = {"image/png", "image/jpg", "image/gif"})
     public ResponseEntity<byte[]> getPicture(@PathVariable("fileName") String fileName){
         return ResponseEntity.ok(userService.openFile(fileName));
     }

@@ -16,6 +16,7 @@ public class TaskListDto {
     private String transliteration;
     private String translation;
     private Long taskCount;
+    private Long count;
     private Long memberCount;
     private Boolean isNonStop;
     private LocalDateTime startTime;
