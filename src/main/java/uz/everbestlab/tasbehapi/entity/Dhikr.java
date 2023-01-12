@@ -18,4 +18,8 @@ public class Dhikr extends BaseEntity{
 
     private String translation;
 
+    private String arabic;
+
+    private String voicePath;
+
 }

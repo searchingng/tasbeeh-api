@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+import uz.everbestlab.tasbehapi.dto.ByteFile;
 import uz.everbestlab.tasbehapi.dto.LoginDto;
 import uz.everbestlab.tasbehapi.dto.UserDto;
 import uz.everbestlab.tasbehapi.entity.User;
@@ -63,13 +64,7 @@ public class UserServiceImpl implements UserService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User has not a picture");
         }
 
-        File file = new File(optional.get().getImagePath());
-        FileInputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(file);
-            return inputStream.readAllBytes();
-        } catch (IOException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        }
+        ByteFile file = uploadService.getByteFile(optional.get().getImagePath());
+        return file.getBody();
     }
 }

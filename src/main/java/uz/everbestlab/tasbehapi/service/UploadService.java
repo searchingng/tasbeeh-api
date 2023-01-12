@@ -1,6 +1,7 @@
 package uz.everbestlab.tasbehapi.service;
 
 import org.springframework.web.multipart.MultipartFile;
+import uz.everbestlab.tasbehapi.dto.ByteFile;
 
 public interface UploadService {
 
@@ -8,4 +9,5 @@ public interface UploadService {
 
      void deleteFile(String path);
 
+     ByteFile getByteFile(String imagePath);
 }

@@ -15,6 +15,7 @@ public class TaskListDto {
     private Long dhikrId;
     private String transliteration;
     private String translation;
+    private String arabic;
     private Long taskCount;
     private Long count;
     private Long memberCount;

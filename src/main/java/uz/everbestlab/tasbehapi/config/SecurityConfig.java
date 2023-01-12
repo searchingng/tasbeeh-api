@@ -4,18 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.config.annotation.web.servlet.configuration.WebMvcSecurityConfiguration;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import uz.everbestlab.tasbehapi.entity.enums.Role;
@@ -36,6 +25,7 @@ public class SecurityConfig {
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/api/dhikr/download-voice/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/users/login").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/users/avatar/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/dhikr").hasAuthority(Role.USER_ROLE.name())

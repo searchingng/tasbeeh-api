@@ -15,6 +15,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
             " t.task.dhikr.id AS dhikrId, \n" +
             " t.task.dhikr.transliteration AS transliteration, \n" +
             " t.task.dhikr.translation AS translation, \n" +
+            " t.task.dhikr.arabic AS arabic, \n" +
             " t.task.taskCount AS taskCount, \n" +
             " t.count AS count, \n" +
             " (SELECT count(ut) FROM UserTasks ut WHERE ut.taskId = t.task.id) AS memberCount, \n" +
@@ -31,6 +32,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
             " t.task.dhikr.id AS dhikrId, \n" +
             " t.task.dhikr.transliteration AS transliteration, \n" +
             " t.task.dhikr.translation AS translation, \n" +
+            " t.task.dhikr.arabic AS arabic, \n" +
             " t.task.taskCount AS taskCount, \n" +
             " t.count AS count, \n" +
             " (SELECT count(ut) FROM UserTasks ut WHERE ut.taskId = t.task.id) AS memberCount, \n" +

@@ -15,6 +15,10 @@ public class DhikrDto {
 
     private String translation;
 
+    private String arabic;
+
     private String createdAt;
+
+    private String voicePath;
 
 }
