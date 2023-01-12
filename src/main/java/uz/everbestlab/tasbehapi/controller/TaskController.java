@@ -7,9 +7,7 @@ import uz.everbestlab.tasbehapi.dto.TaskDto;
 import uz.everbestlab.tasbehapi.dto.TaskListDto;
 import uz.everbestlab.tasbehapi.dto.UserDto;
 import uz.everbestlab.tasbehapi.dto.UserTasksDto;
-import uz.everbestlab.tasbehapi.entity.UserTasks;
 import uz.everbestlab.tasbehapi.service.TaskService;
-import uz.everbestlab.tasbehapi.service.UserTasksService;
 
 import java.util.List;
 

@@ -1,6 +1,5 @@
 package uz.everbestlab.tasbehapi.service;
 
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.web.multipart.MultipartFile;
 import uz.everbestlab.tasbehapi.dto.LoginDto;
 import uz.everbestlab.tasbehapi.dto.UserDto;
@@ -13,4 +12,5 @@ public interface UserService {
 
     byte[] openFile(String fileName);
 
+    UserDto update(UserDto userDto);
 }

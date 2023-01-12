@@ -1,6 +1,5 @@
 package uz.everbestlab.tasbehapi.service;
 
-import uz.everbestlab.tasbehapi.dto.TaskDto;
 import uz.everbestlab.tasbehapi.dto.UserTasksDto;
 import uz.everbestlab.tasbehapi.entity.UserTasks;
 

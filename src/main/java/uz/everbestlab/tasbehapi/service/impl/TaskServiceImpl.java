@@ -11,13 +11,12 @@ import uz.everbestlab.tasbehapi.dto.UserTasksDto;
 import uz.everbestlab.tasbehapi.entity.Task;
 import uz.everbestlab.tasbehapi.entity.User;
 import uz.everbestlab.tasbehapi.entity.enums.TaskStatus;
-import uz.everbestlab.tasbehapi.service.mapper.TaskMapper;
 import uz.everbestlab.tasbehapi.repository.TaskRepository;
 import uz.everbestlab.tasbehapi.security.UserUtil;
 import uz.everbestlab.tasbehapi.service.TaskService;
 import uz.everbestlab.tasbehapi.service.UserTasksService;
+import uz.everbestlab.tasbehapi.service.mapper.TaskMapper;
 import uz.everbestlab.tasbehapi.service.mapper.UserMapper;
-import uz.everbestlab.tasbehapi.service.mapper.UserTasksMapper;
 
 import java.util.List;
 import java.util.stream.Collectors;

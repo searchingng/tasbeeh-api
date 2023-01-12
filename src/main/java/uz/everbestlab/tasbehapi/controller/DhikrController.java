@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import uz.everbestlab.tasbehapi.dto.ByteFile;
 import uz.everbestlab.tasbehapi.dto.DhikrDto;
-import uz.everbestlab.tasbehapi.entity.Dhikr;
 import uz.everbestlab.tasbehapi.service.DhikrService;
 
 import java.util.List;

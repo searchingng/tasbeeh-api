@@ -1,10 +1,7 @@
 package uz.everbestlab.tasbehapi.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,6 +21,11 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<LoginDto> login(@RequestBody UserDto userDto){
         return ResponseEntity.ok(userService.login(userDto));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<UserDto> update(@RequestBody UserDto userDto){
+        return ResponseEntity.ok(userService.update(userDto));
     }
 
     @PostMapping("/upload-picture")

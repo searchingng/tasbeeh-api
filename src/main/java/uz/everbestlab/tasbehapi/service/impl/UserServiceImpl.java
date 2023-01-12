@@ -10,17 +10,13 @@ import uz.everbestlab.tasbehapi.dto.LoginDto;
 import uz.everbestlab.tasbehapi.dto.UserDto;
 import uz.everbestlab.tasbehapi.entity.User;
 import uz.everbestlab.tasbehapi.entity.enums.Role;
-import uz.everbestlab.tasbehapi.security.UserUtil;
-import uz.everbestlab.tasbehapi.service.UploadService;
-import uz.everbestlab.tasbehapi.service.mapper.UserMapper;
 import uz.everbestlab.tasbehapi.repository.UserRepository;
+import uz.everbestlab.tasbehapi.security.UserUtil;
 import uz.everbestlab.tasbehapi.security.jwt.JwtUtil;
+import uz.everbestlab.tasbehapi.service.UploadService;
 import uz.everbestlab.tasbehapi.service.UserService;
+import uz.everbestlab.tasbehapi.service.mapper.UserMapper;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Optional;
 
 @Service
@@ -66,5 +62,14 @@ public class UserServiceImpl implements UserService {
 
         ByteFile file = uploadService.getByteFile(optional.get().getImagePath());
         return file.getBody();
+    }
+
+    @Override
+    public UserDto update(UserDto userDto) {
+        User current = UserUtil.currentUser();
+        current.setFirstName(userDto.getFirstName());
+        current.setLastName(userDto.getLastName());
+        userRepository.save(current);
+        return userMapper.toDto(current);
     }
 }
